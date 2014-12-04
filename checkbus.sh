@@ -17,10 +17,10 @@ UPDATE_INTERVAL_SEC=30
 URL="http://webservices.nextbus.com/service/publicXMLFeed?"
 URL+="command=predictions&a=${AGENCY}&r=${ROUTE}&s=${STOP}"
 
-COLOR_BLUE="\e[34;1m"
-COLOR_GREEN="\e[32;1m"
-COLOR_YELLOW="\e[33;1m"
-COLOR_NONE="\e[0m"
+COLOR_BLUE="\x1b[34;1m"
+COLOR_GREEN="\x1b[32;1m"
+COLOR_YELLOW="\x1b[33;1m"
+COLOR_NONE="\x1b[0m"
 
 while true; do
  ($INCLUDE_CURRENT_DATE && date +"%A %F %I:%M %P"
