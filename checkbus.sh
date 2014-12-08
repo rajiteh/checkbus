@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # What stop to watch.
-AGENCY="mbta"
-ROUTE="94"
-STOP="5104"
+AGENCY="ttc"
+ROUTE=$1
+STOP=$2
 
 # Times, in minutes, for different colors in the display.
 MIN_BLUE_TIME=38
@@ -16,7 +16,7 @@ UPDATE_INTERVAL_SEC=30
 
 URL="http://webservices.nextbus.com/service/publicXMLFeed?"
 URL+="command=predictions&a=${AGENCY}&r=${ROUTE}&s=${STOP}"
-
+#echo $URL
 COLOR_BLUE="\x1b[34;1m"
 COLOR_GREEN="\x1b[32;1m"
 COLOR_YELLOW="\x1b[33;1m"
