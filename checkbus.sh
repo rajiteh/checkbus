@@ -1,4 +1,5 @@
 #!/bin/bash
+# Usage: ./checkbus.sh [route] [stop]
 
 # What stop to watch.
 AGENCY="ttc"
@@ -44,11 +45,10 @@ resolve_route_names() {
     echo "[${route_ids[i]}] ${route_names[i]}"
   done
   echo -n "Type in the value inside [] for your route:"
-  return `read retval && echo $retval`
+  read route
 }
 
 resolve_stop_names() {
-  local route=$1
   local stopsURL="${BASE_URL}?command=routeConfig&a=${AGENCY}&r=${route}"
   local result=`curl -s "$stopsURL" | grep '^<stop.*tag=.*>$'`
   local title_names
@@ -68,20 +68,20 @@ resolve_stop_names() {
   do
     echo "[${stop_ids[i]}] ${title_names[i]}"
   done
-  echo -p "Type in the value inside [] for your stop:"
-  return `read retval && echo $retval`
+  echo -n "Type in the value inside [] for your stop:"
+  read stop
 }
 
 #Figure out route and stop
+route=""
+stop=""
 if [ -z "$1" ]; then
   resolve_route_names
-  route=$?
 else
   route=$1
 fi
 if [ -z "$2" ]; then
-  resolve_stop_names $route
-  stop=$?
+  resolve_stop_names
 else
   stop=$2
 fi
