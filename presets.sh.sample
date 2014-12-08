@@ -1,0 +1,7 @@
+#Usage: $> FROM=placeA ./checkbus.sh
+if [ "$FROM" == "placeA" ]; then
+  set -- "routeid" "stopid"
+elif [ "$FROM" == "placeB" ]; then
+  set -- "routeid" "stopid"
+fi
+
